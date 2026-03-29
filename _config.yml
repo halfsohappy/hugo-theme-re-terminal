@@ -90,22 +90,6 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .git
-  - .husky
-  - .eslintrc.yml
-  - .prettierrc
-  - .stylelintrc.json
-  - .babelrc
-  - babel.config.js
-  - package.json
-  - package-lock.json
-  - package.hugo.json
-  - yarn.lock
-  - go.mod
-  - theme.toml
-  - config.toml
-  - layouts/
-  - archetypes/
-  - demoSite/
 
 include:
   - _pages
