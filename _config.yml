@@ -6,7 +6,7 @@ url: ""
 lang: en
 
 # Theme params
-theme_color: blue        # options: blue, green, orange, pink, red, paper
+theme_color: blue        # options: blue, green, orange, pink, red, paper, gooey
 logo_text: re-Terminal
 logo_home_link: /
 subtitle: A simple, retro theme for Jekyll

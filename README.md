@@ -53,7 +53,7 @@ re-Terminal before v2.1.0 may work with versions of HUGO less than v0.128.0 belo
 
 ## Features
 
-- **6 duotone themes**, depending on your preferences (blue is default, red, orange, green, pink, paper)
+- **7 duotone themes**, depending on your preferences (blue is default, red, orange, green, pink, paper, gooey)
 - [**Fira Code**](https://github.com/tonsky/FiraCode) as default monospaced font. It's gorgeous!
 - **really nice duotone**, custom syntax highlighting based on [**PrismJS**](https://prismjs.com)
 - fully responsive
@@ -431,7 +431,7 @@ title: Your Site Title
 description: Your site description
 subtitle: Shown in meta tags and header
 
-# Theme color: blue (default), green, orange, pink, red, paper
+# Theme color: blue (default), green, orange, pink, red, paper, gooey
 theme_color: blue
 
 # Logo

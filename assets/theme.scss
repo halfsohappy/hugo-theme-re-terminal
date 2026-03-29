@@ -2,7 +2,7 @@
 ---
 $centerTheme: {% if site.center_theme %}center{% else %}flex-start{% endif %};
 
-{% if site.theme_color == "paper" %}
+{% if site.theme_color == "paper" or site.theme_color == "gooey" %}
 @import "variables-light";
 {% else %}
 @import "variables";
