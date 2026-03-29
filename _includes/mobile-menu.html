@@ -1,0 +1,21 @@
+<ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;&#9662;</li>
+  <li>
+    <ul class="menu__dropdown">
+      {% for item in site.nav %}
+        {% if item.children %}
+          <li class="menu__subdrop--title">&#9662;&nbsp;{{ item.name }}</li>
+          <li>
+            <ul class="menu__subdrop--list">
+              {% for child in item.children %}
+                <li><a href="{{ child.url | relative_url }}"{% if child.new_tab %} target="_blank"{% endif %}>{{ child.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,30 @@
+---
+---
+$centerTheme: {% if site.center_theme %}center{% else %}flex-start{% endif %};
+
+{% if site.theme_color == "paper" or site.theme_color == "gooey" %}
+@import "variables-light";
+{% else %}
+@import "variables";
+{% endif %}
+
+@import "color/{{ site.theme_color | default: 'blue' }}";
+
+@import "font";
+@import "buttons";
+@import "form";
+
+@import "header";
+@import "menu";
+@import "logo";
+@import "main";
+@import "post";
+@import "pagination";
+@import "footer";
+@import "banner";
+
+@import "prism";
+@import "syntax";
+@import "code";
+@import "terms";
+@import "gist";

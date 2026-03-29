@@ -1,0 +1,30 @@
+{% comment %}
+  Table of Contents generator using pure Liquid.
+  Usage: {% include toc.html html=content sanitize=true %}
+{% endcomment %}
+{% assign nodes = include.html | split: '<h' %}
+{% assign minHeader = 1 %}
+<ul class="toc-list">
+{% for node in nodes %}
+  {% assign headerLevel = node | slice: 0, 1 | plus: 0 %}
+  {% if headerLevel >= 1 and headerLevel <= 6 %}
+    {% assign parts = node | split: '"' %}
+    {% assign headerId = '' %}
+    {% for part in parts %}
+      {% assign prev_index = forloop.index | minus: 1 %}
+      {% assign prev = parts[prev_index] %}
+      {% if prev contains 'id=' %}
+        {% assign headerId = part %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% assign headerContent = node | split: '>' %}
+    {% assign headerText = headerContent[1] | split: '<' | first | strip_html %}
+    {% if headerId != '' and headerText != '' %}
+      <li class="toc-level-{{ headerLevel }}">
+        <a href="#{{ headerId }}">{{ headerText }}</a>
+      </li>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</ul>

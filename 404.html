@@ -1,0 +1,8 @@
+---
+layout: page
+title: "404 - Page Not Found"
+permalink: /404.html
+---
+
+<p>{{ site.missing_content_message | default: "Page not found..." }}</p>
+<a href="{{ "/" | relative_url }}" class="button">{{ site.missing_back_button_label | default: "Back to home page" }}</a>

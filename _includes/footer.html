@@ -1,0 +1,21 @@
+<footer class="footer">
+  <div class="footer__inner">
+    {% if site.copyright %}
+      <div class="copyright copyright--user">
+        <span>{{ site.copyright }}</span>
+    {% else %}
+      <div class="copyright">
+        <span>&copy; {{ "now" | date: "%Y" }} Powered by <a href="https://jekyllrb.com">Jekyll</a></span>
+    {% endif %}
+      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="{{ "/assets/js/menu.js" | relative_url }}"></script>
+
+{% if site.banner %}
+  <script type="text/javascript" src="{{ "/assets/js/banner.js" | relative_url }}"></script>
+{% endif %}
+
+{% include extended-footer.html %}

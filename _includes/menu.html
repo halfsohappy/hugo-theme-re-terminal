@@ -1,0 +1,50 @@
+<nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    {% assign show_count = site.show_menu_items | default: 3 %}
+    {% assign nav_items = site.nav %}
+    {% assign nav_size = nav_items | size %}
+    {% for item in nav_items limit: show_count %}
+      {% if item.children %}
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">{{ item.name }}&nbsp;&#9662;</li>
+            <li>
+              <ul class="menu__dropdown">
+                {% for child in item.children %}
+                  <li><a href="{{ child.url | relative_url }}"{% if child.new_tab %} target="_blank"{% endif %}>{{ child.name }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </li>
+      {% else %}
+        <li><a href="{{ item.url | relative_url }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.name }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if nav_size > show_count %}
+      <li>
+        <ul class="menu">
+          <li class="menu__trigger">{{ site.menu_more | default: "Show more" }}&nbsp;&#9662;</li>
+          <li>
+            <ul class="menu__dropdown">
+              {% for item in nav_items offset: show_count %}
+                {% if item.children %}
+                  <li class="menu__subdrop--title">&#9662;&nbsp;{{ item.name }}</li>
+                  <li>
+                    <ul class="menu__subdrop--list">
+                      {% for child in item.children %}
+                        <li><a href="{{ child.url | relative_url }}"{% if child.new_tab %} target="_blank"{% endif %}>{{ child.name }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% else %}
+                  <li><a href="{{ item.url | relative_url }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.name }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
