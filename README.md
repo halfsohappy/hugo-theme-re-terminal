@@ -391,3 +391,148 @@ Copyright © 2019-2022 Radosław Kozieł ([@panr](https://twitter.com/panr))
 Copyright © 2024-now Mirus
 
 The theme is released under the MIT License. Check the [original theme license](https://github.com/mirus-ua/hugo-theme-re-terminal/blob/main/LICENSE.md) for additional licensing information.
+
+---
+
+## Jekyll Port
+
+This repository also includes a complete Jekyll port of the re-Terminal theme.
+
+### Jekyll Requirements
+
+- Ruby 3.x
+- Jekyll 4.3+
+- Gems: `jekyll-paginate`, `jekyll-feed`, `jekyll-seo-tag`, `jekyll-archives`
+
+### Jekyll Quick Start
+
+1. **Install dependencies:**
+   ```bash
+   gem install bundler
+   bundle install
+   ```
+
+2. **Run the development server:**
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+3. **Build for production:**
+   ```bash
+   bundle exec jekyll build
+   ```
+
+### Jekyll Configuration
+
+Edit `_config.yml` to configure your site. Key options:
+
+```yaml
+title: Your Site Title
+description: Your site description
+subtitle: Shown in meta tags and header
+
+# Theme color: blue (default), green, orange, pink, red, paper
+theme_color: blue
+
+# Logo
+logo_text: re-Terminal
+logo_home_link: /
+
+# Layout options
+center_theme: true         # Center the content (default: true)
+full_width_theme: false    # Full width layout (default: false)
+one_heading_size: true     # Use one heading size (default: true)
+
+# Reading time
+reading_time: true
+
+# Navigation menu items
+nav:
+  - name: About
+    url: /about/
+  - name: Showcase
+    url: /showcase/
+  # Sub-menu example:
+  # - name: More
+  #   children:
+  #     - name: Tags
+  #       url: /tags/
+
+# Pagination
+paginate: 5
+
+# Banner (optional)
+# banner:
+#   text: "Check out the GitHub repo"
+#   url: "https://github.com/mirus-ua/hugo-theme-re-terminal"
+#   dismissible: false
+```
+
+### Jekyll Post Format
+
+Posts go in `_posts/` with YAML front matter:
+
+```markdown
+---
+layout: post
+title: "My Post Title"
+date: 2024-01-01
+author: Your Name
+cover: /img/my-cover.jpg
+cover_caption: "Optional caption for the cover image"
+description: "Short description for list view and SEO"
+tags: [tag1, tag2]
+show_full_content: false
+reading_time: true
+hide_comments: false
+color: ""  # Optional per-page theme color override
+---
+
+Your post content here...
+```
+
+### Jekyll Pages
+
+Create pages in `_pages/` with a `permalink` in the front matter:
+
+```markdown
+---
+layout: page
+title: About
+permalink: /about/
+---
+
+Page content here...
+```
+
+### Jekyll Shortcodes → Liquid Includes
+
+Hugo shortcodes are replaced by Jekyll `{% include %}` tags:
+
+| Hugo Shortcode | Jekyll Include |
+|---|---|
+| `{{< figure src="..." >}}` | `{% include figure.html src="..." %}` |
+| `{{< image src="..." >}}` | `{% include image.html src="..." %}` |
+| `{{< code language="js" >}}...{{< /code >}}` | `{% include code.html language="js" content="..." %}` |
+
+### Customization
+
+- **Custom CSS:** Create `assets/style.css` to override theme variables
+- **Comments:** Override `_includes/comments.html` in your site
+- **Extended head:** Override `_includes/extended-head.html` in your site
+- **Extended footer:** Override `_includes/extended-footer.html` in your site
+
+### Jekyll File Structure
+
+```
+your-jekyll-site/
+├── _config.yml
+├── Gemfile
+├── index.html           # Home page (uses home layout + paginator)
+├── 404.html
+├── _posts/              # Blog posts (YYYY-MM-DD-title.md)
+├── _pages/              # Static pages (about, showcase, etc.)
+├── assets/
+│   └── style.css        # Optional: override theme CSS variables
+└── _includes/           # Optional: override comments.html, extended-head.html, etc.
+```
