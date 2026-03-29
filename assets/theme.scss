@@ -1,10 +1,10 @@
 ---
 ---
-{% if site.theme_color == "paper" %}
 $centerTheme: {% if site.center_theme %}center{% else %}flex-start{% endif %};
+
+{% if site.theme_color == "paper" %}
 @import "variables-light";
 {% else %}
-$centerTheme: {% if site.center_theme %}center{% else %}flex-start{% endif %};
 @import "variables";
 {% endif %}
 
