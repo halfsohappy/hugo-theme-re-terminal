@@ -1,0 +1,20 @@
+{% assign cover_post = include.post %}
+{% assign caption_enabled = include.caption %}
+
+{% if cover_post.cover %}
+  {% assign cover_src = cover_post.cover %}
+  {% if caption_enabled and cover_post.cover_caption %}
+    <figure>
+      <img src="{{ cover_src | relative_url }}"
+        class="post-cover"
+        alt="{{ cover_post.title | strip_html | default: " " }}"
+        title="{{ cover_post.cover_credit | strip_html | default: "Cover Image" }}" />
+      <figcaption class="right">{{ cover_post.cover_caption }}</figcaption>
+    </figure>
+  {% else %}
+    <img src="{{ cover_src | relative_url }}"
+      class="post-cover"
+      alt="{{ cover_post.title | strip_html | default: " " }}"
+      title="{{ cover_post.cover_credit | strip_html | default: "Cover Image" }}" />
+  {% endif %}
+{% endif %}

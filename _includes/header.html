@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      {% include logo.html %}
+    </div>
+    {% if site.nav %}
+      {% include mobile-menu.html %}
+    {% endif %}
+  </div>
+  {% if site.nav %}
+    {% include menu.html %}
+  {% endif %}
+</header>

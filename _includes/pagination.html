@@ -1,0 +1,16 @@
+<div class="pagination">
+  <div class="pagination__buttons">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" class="button previous">
+        <span class="button__icon">&larr;</span>
+        <span class="button__text">{{ site.newer_posts | default: "Newer posts" }}</span>
+      </a>
+    {% endif %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" class="button next">
+        <span class="button__text">{{ site.older_posts | default: "Older posts" }}</span>
+        <span class="button__icon">&rarr;</span>
+      </a>
+    {% endif %}
+  </div>
+</div>

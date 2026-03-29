@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<h1>Posts for: #{{ page.title }}</h1>
+{% if page.content != "" %}
+  <div class="index-content">
+    {{ content }}
+  </div>
+{% endif %}
+<div class="posts">
+  {% for post in page.posts %}
+    <article class="post on-list">
+      <h1 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title | markdownify }}</a>
+      </h1>
+      <div class="post-meta">
+        {% if post.date %}
+          <time class="post-date">
+            {{- post.date | date: "%Y-%m-%d" -}}
+          </time>
+        {% endif %}
+        {% if post.author %}
+          <span class="post-author">{{- post.author -}}</span>
+        {% endif %}
+      </div>
+
+      {% if post.tags %}
+        <span class="post-tags">
+          {% for tag in post.tags %}
+          #<a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/"
+            >{{- tag -}}</a>&nbsp;
+          {% endfor %}
+        </span>
+      {% endif %}
+
+      {% include cover.html post=post caption=false %}
+
+      <div class="post-content">
+        {% if post.show_full_content %}
+          {{ post.content }}
+        {% elsif post.description %}
+          {{ post.description | markdownify }}
+        {% else %}
+          {{ post.excerpt }}
+        {% endif %}
+      </div>
+
+      {% unless post.show_full_content %}
+        <div>
+          <a class="read-more button" href="{{ post.url | relative_url }}">{{ site.read_more | default: "Read more" }} &rarr;</a>
+        </div>
+      {% endunless %}
+    </article>
+  {% endfor %}
+</div>

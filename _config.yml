@@ -1,0 +1,111 @@
+# Site settings
+title: re-Terminal
+description: A simple, retro theme for Jekyll
+baseurl: ""
+url: ""
+lang: en
+
+# Theme params
+theme_color: blue        # options: blue, green, orange, pink, red, paper
+logo_text: re-Terminal
+logo_home_link: /
+subtitle: A simple, retro theme for Jekyll
+keywords: ""
+copyright: ""
+show_menu_items: 3
+full_width_theme: false
+center_theme: true
+one_heading_size: true
+reading_time: true
+show_last_updated: false
+updated_date_prefix: "Updated"
+minute_reading_time: "min read"
+words: "words"
+read_more: "Read more"
+read_other_posts: "Read other posts"
+newer_posts: "Newer posts"
+older_posts: "Older posts"
+menu_more: "Show more"
+content_type_name: posts
+toc: false
+toc_title: "Table of Contents"
+missing_content_message: "Page not found..."
+missing_back_button_label: "Back to home page"
+auto_cover: false
+
+# Banner (optional)
+# banner:
+#   text: "Check it out on GitHub"
+#   url: "https://github.com/mirus-ua/hugo-theme-re-terminal"
+#   dismissible: false
+
+# Social links (optional)
+# twitter:
+#   site: "@yoursite"
+#   creator: "@yourcreator"
+
+# Favicon (optional - defaults to theme color icon)
+# favicon: /img/favicon.png
+
+# Navigation menu - list of {name, url, new_tab} items
+# Sub-menus: add children list
+nav:
+  - name: About
+    url: /about/
+  - name: Showcase
+    url: /showcase/
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+paginate: 5
+paginate_path: "/page/:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - tags
+    - categories
+  layout: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
+
+kramdown:
+  auto_ids: true
+  toc_levels: [1, 2, 3, 4, 5, 6]
+
+# Exclude from processing.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .git
+  - .husky
+  - .eslintrc.yml
+  - .prettierrc
+  - .stylelintrc.json
+  - .babelrc
+  - babel.config.js
+  - package.json
+  - package-lock.json
+  - package.hugo.json
+  - yarn.lock
+  - go.mod
+  - theme.toml
+  - config.toml
+  - layouts/
+  - archetypes/
+  - demoSite/
+
+include:
+  - _pages

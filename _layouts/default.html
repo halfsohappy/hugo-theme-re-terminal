@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en" }}">
+<head>
+  <title>{% if page.url == "/" %}{{ site.title }}{% else %}{{ page.title }} :: {{ site.title }}{% endif %}</title>
+  {% include head.html %}
+</head>
+<body class="{{ page.color | default: site.theme_color }}">
+{% if site.banner %}
+  <div id="banner">
+    <span>
+      {% if site.banner.url %}
+        <a href="{{ site.banner.url }}">{{ site.banner.text }}</a>
+      {% else %}
+        {{ site.banner.text }}
+      {% endif %}
+    </span>
+    {% if site.banner.dismissible %}
+      <button type="button">x</button>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% assign container_class = "container" %}
+{% if site.full_width_theme %}
+  {% assign container_class = "container full" %}
+{% elsif site.center_theme %}
+  {% assign container_class = "container center" %}
+{% endif %}
+{% if site.one_heading_size %}
+  {% assign container_class = container_class | append: " headings--one-size" %}
+{% endif %}
+
+<div class="{{ container_class }}">
+
+  {% include header.html %}
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  {% include footer.html %}
+</div>
+
+</body>
+</html>

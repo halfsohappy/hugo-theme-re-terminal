@@ -1,0 +1,62 @@
+---
+layout: default
+---
+<article class="post">
+  <h1 class="post-title">
+    <a href="{{ page.url | relative_url }}">{{ page.title | markdownify }}</a>
+  </h1>
+  <div class="post-meta">
+    {% if page.date %}
+      <time class="post-date">
+        {{- page.date | date: "%Y-%m-%d" -}}
+        {% if site.show_last_updated and page.last_modified_at %}
+          [{{ site.updated_date_prefix | default: "Updated" }} :: {{ page.last_modified_at | date: "%Y-%m-%d" }}]
+        {% endif %}
+      </time>
+    {% endif %}
+    {% if page.author %}
+      <span class="post-author">{{ page.author }}</span>
+    {% endif %}
+    {% include comments-counter.html post=page %}
+    {% assign show_reading_time = page.reading_time | default: site.reading_time %}
+    {% if show_reading_time %}
+      {% assign words = page.content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 | plus: 1 %}
+      <span class="post-reading-time">{{ minutes }} {{ site.minute_reading_time | default: "min read" }} ({{ words }} {{ site.words | default: "words" }})</span>
+    {% endif %}
+  </div>
+
+  {% if page.tags %}
+    <span class="post-tags">
+      {% for tag in page.tags %}
+      #<a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/">{{ tag }}</a>&nbsp;
+      {% endfor %}
+    </span>
+  {% endif %}
+
+  {% include cover.html post=page caption=true %}
+
+  {% assign show_toc = page.toc | default: site.toc %}
+  {% if show_toc %}
+    <div class="table-of-contents">
+      <h2>
+        {{ page.toc_title | default: site.toc_title | default: "Table of Contents" }}
+      </h2>
+      {% include toc.html html=content sanitize=true %}
+    </div>
+  {% endif %}
+
+  <div class="post-content">
+    {% if content != "" %}
+      <div>
+        {{ content }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% include posts-pagination.html %}
+
+  {% unless page.hide_comments %}
+    {% include comments.html %}
+  {% endunless %}
+</article>
