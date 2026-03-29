@@ -1,15 +1,15 @@
 # Site settings
-title: re-Terminal
-description: A simple, retro theme for Jekyll
-baseurl: ""
-url: ""
+title: re-Terminal Demo
+description: A simple, retro theme for Jekyll — demo site
+baseurl: "/hugo-theme-re-terminal"
+url: "https://halfsohappy.github.io"
 lang: en
 
 # Theme params
-theme_color: blue        # options: blue, green, orange, pink, red, paper, gooey
+theme_color: gooey       # options: blue, green, orange, pink, red, paper, gooey
 logo_text: re-Terminal
 logo_home_link: /
-subtitle: A simple, retro theme for Jekyll
+subtitle: Demo site · gooey theme
 keywords: ""
 copyright: ""
 show_menu_items: 3
